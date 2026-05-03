@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Chorify — Learn to Dance with AI Pose Detection & Haptic Feedback</title>
+<meta name="description" content="Chorify is a smart dance learning application that compares your movements with a reference video using AI pose detection, and delivers rhythm cues through a Bluetooth haptic device." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!-- ===== Animated background ===== -->
+<div class="bg-gradient"></div>
+<div class="bg-grid"></div>
+<div class="bg-orb bg-orb-1"></div>
+<div class="bg-orb bg-orb-2"></div>
+<div class="bg-orb bg-orb-3"></div>
+
+<!-- ===== Nav ===== -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#" class="logo">
+      <span class="logo-mark">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="5" r="2"/>
+          <path d="M12 7v5"/>
+          <path d="M8 22l4-10 4 10"/>
+          <path d="M7 14l5-2 5 2"/>
+        </svg>
+      </span>
+      <span class="logo-text">Chorify</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#features">Features</a></li>
+      <li><a href="#how">How it works</a></li>
+      <li><a href="#tech">Tech</a></li>
+      <li><a href="#setup">Setup</a></li>
+    </ul>
+    <a href="https://github.com/ronategarcia/eva_project" target="_blank" rel="noopener" class="btn btn-ghost">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.27-1.69-1.27-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.75 2.69 1.25 3.35.96.1-.74.4-1.25.72-1.54-2.55-.29-5.23-1.28-5.23-5.7 0-1.26.45-2.29 1.18-3.1-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.79 0c2.21-1.49 3.18-1.18 3.18-1.18.62 1.58.23 2.75.11 3.04.74.81 1.18 1.84 1.18 3.1 0 4.43-2.69 5.41-5.25 5.69.41.36.78 1.05.78 2.13v3.16c0 .31.21.68.8.56A11.51 11.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/></svg>
+      <span>GitHub</span>
+    </a>
+  </div>
+</nav>
+
+<!-- ===== Hero ===== -->
+<header class="hero">
+  <div class="hero-inner">
+    <div class="badge">
+      <span class="badge-dot"></span>
+      <span>Powered by MediaPipe + OpenAI + ESP32</span>
+    </div>
+    <h1 class="hero-title">
+      Dance smarter.<br />
+      <span class="gradient-text">Feel every beat.</span>
+    </h1>
+    <p class="hero-subtitle">
+      Chorify is a real-time choreography coach. Load any dance video, and AI pose detection compares
+      your movements frame-by-frame — while a Bluetooth haptic wearable pulses every beat into your skin.
+    </p>
+    <div class="hero-cta">
+      <a href="#download" class="btn btn-primary">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download Source
+      </a>
+      <a href="#how" class="btn btn-secondary">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        See how it works
+      </a>
+    </div>
+
+    <!-- Hero showcase -->
+    <div class="hero-showcase">
+      <div class="window">
+        <div class="window-bar">
+          <span class="dot dot-r"></span>
+          <span class="dot dot-y"></span>
+          <span class="dot dot-g"></span>
+          <span class="window-title">Chorify · live session</span>
+        </div>
+        <div class="window-body">
+          <div class="panel panel-cam">
+            <div class="panel-label">YOUR CAMERA</div>
+            <svg class="pose-svg" viewBox="0 0 200 240" aria-hidden="true">
+              <g class="pose pose-user">
+                <circle cx="100" cy="40" r="14"/>
+                <line x1="100" y1="54" x2="100" y2="120"/>
+                <line x1="100" y1="70" x2="60" y2="100"/>
+                <line x1="100" y1="70" x2="140" y2="100"/>
+                <line x1="60" y1="100" x2="50" y2="140"/>
+                <line x1="140" y1="100" x2="150" y2="140"/>
+                <line x1="100" y1="120" x2="80" y2="180"/>
+                <line x1="100" y1="120" x2="120" y2="180"/>
+                <line x1="80" y1="180" x2="75" y2="220"/>
+                <line x1="120" y1="180" x2="125" y2="220"/>
+              </g>
+            </svg>
+            <div class="status-pill status-good"><span class="status-dot"></span>On beat</div>
+          </div>
+          <div class="panel panel-ref">
+            <div class="panel-label">REFERENCE</div>
+            <svg class="pose-svg" viewBox="0 0 200 240" aria-hidden="true">
+              <g class="pose pose-ref">
+                <circle cx="100" cy="40" r="14"/>
+                <line x1="100" y1="54" x2="100" y2="120"/>
+                <line x1="100" y1="70" x2="55" y2="105"/>
+                <line x1="100" y1="70" x2="145" y2="105"/>
+                <line x1="55" y1="105" x2="40" y2="135"/>
+                <line x1="145" y1="105" x2="160" y2="135"/>
+                <line x1="100" y1="120" x2="78" y2="180"/>
+                <line x1="100" y1="120" x2="122" y2="180"/>
+                <line x1="78" y1="180" x2="72" y2="220"/>
+                <line x1="122" y1="180" x2="128" y2="220"/>
+              </g>
+            </svg>
+            <div class="status-pill status-info"><span class="status-dot"></span>1.0× speed</div>
+          </div>
+        </div>
+        <div class="window-footer">
+          <div class="waveform">
+            <span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span>
+          </div>
+          <div class="haptic">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5L19 19M5 19l1.5-1.5M17.5 6.5L19 5"/><circle cx="12" cy="12" r="4"/></svg>
+            <span>Haptic linked</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ===== Stats ===== -->
+<section class="stats">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat">
+        <div class="stat-value">19</div>
+        <div class="stat-label">Body landmarks tracked</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">10ms</div>
+        <div class="stat-label">Audio envelope resolution</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">60fps</div>
+        <div class="stat-label">Real-time pose comparison</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">BLE</div>
+        <div class="stat-label">Wireless haptic device</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Features ===== -->
+<section class="features" id="features">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Features</div>
+      <h2>Everything you need to learn a routine.</h2>
+      <p>Chorify combines computer vision, audio analysis, and embedded hardware into one fluid practice loop.</p>
+    </div>
+    <div class="features-grid">
+
+      <article class="feature">
+        <div class="feature-icon icon-purple">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="6" r="3"/><path d="M12 9v6"/><path d="M8 21l4-6 4 6"/><path d="M5 14h14"/></svg>
+        </div>
+        <h3>AI Pose Detection</h3>
+        <p>MediaPipe extracts 19 keypoints from your webcam and the reference clip in real time, then compares angle and offset frame-by-frame.</p>
+      </article>
+
+      <article class="feature">
+        <div class="feature-icon icon-pink">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h3l3-9 6 18 3-9h3"/></svg>
+        </div>
+        <h3>Audio Visualization</h3>
+        <p>Live waveform plus a 10ms-resolution amplitude envelope drive both the visualizer and the haptic intensity.</p>
+      </article>
+
+      <article class="feature">
+        <div class="feature-icon icon-blue">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2l12 10L6 22V2z"/><line x1="6" y1="12" x2="18" y2="12"/></svg>
+        </div>
+        <h3>Bluetooth Haptics</h3>
+        <p>Pairs with any Nordic UART-compatible board (Adafruit, ESP32). Vibration scales with music intensity and triggers on missed moves.</p>
+      </article>
+
+      <article class="feature">
+        <div class="feature-icon icon-green">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        </div>
+        <h3>Smart Playback</h3>
+        <p>Toggle 0.5× / 1.0× speed, scrub the timeline, and start with a 5-second countdown so you can warm up before the beat drops.</p>
+      </article>
+
+      <article class="feature">
+        <div class="feature-icon icon-orange">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-7"/></svg>
+        </div>
+        <h3>Performance Tracking</h3>
+        <p>Logs pauses, seeks, slow-mo usage, and per-frame accuracy. Review what you struggled with and where you nailed it.</p>
+      </article>
+
+      <article class="feature">
+        <div class="feature-icon icon-red">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M9 9l6 6M15 9l-6 6"/></svg>
+        </div>
+        <h3>Visual Feedback</h3>
+        <p>Your camera frame glows red when you're off the choreography and stays clean when you're in sync — instant cue, zero menu-diving.</p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== How it works ===== -->
+<section class="how" id="how">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Workflow</div>
+      <h2>From upload to muscle memory.</h2>
+      <p>A single Python app stitches video, vision, and hardware into one continuous feedback loop.</p>
+    </div>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <h3>Load a video</h3>
+        <p>Drop in any MP4, AVI, or MOV. Chorify decodes the audio track and extracts a reference pose stream.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <h3>Pair the device</h3>
+        <p>Toggle Bluetooth and connect your ESP32 wearable. <code>codepy_backup.py</code> ships ready to flash.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <h3>Hit play</h3>
+        <p>A 5-second countdown gives you time to set up. Then your webcam pose is compared frame-by-frame against the reference.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <h3>Feel the beat</h3>
+        <p>The music envelope drives haptic vibration; mismatches push a sharper pulse so your body learns without looking.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Tech ===== -->
+<section class="tech" id="tech">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Tech stack</div>
+      <h2>Built on tools you trust.</h2>
+    </div>
+    <div class="tech-grid">
+      <div class="tech-card">
+        <div class="tech-name">Python · PyQt6</div>
+        <p>Native desktop UI with smooth video playback, sliders, and live drawing.</p>
+      </div>
+      <div class="tech-card">
+        <div class="tech-name">MediaPipe</div>
+        <p>Google's pose-estimation pipeline runs locally — no cloud round-trip.</p>
+      </div>
+      <div class="tech-card">
+        <div class="tech-name">OpenAI API</div>
+        <p>Optional natural-language feedback layer for personalized coaching cues.</p>
+      </div>
+      <div class="tech-card">
+        <div class="tech-name">Nordic UART (BLE)</div>
+        <p>Industry-standard wireless protocol works with ESP32, Adafruit, and more.</p>
+      </div>
+      <div class="tech-card">
+        <div class="tech-name">CircuitPython</div>
+        <p>The wearable firmware (<code>codepy_backup.py</code>) is just a file copy away.</p>
+      </div>
+      <div class="tech-card">
+        <div class="tech-name">macOS-ready</div>
+        <p>App Store entitlements and helper configs included for distribution.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Setup / Download ===== -->
+<section class="setup" id="setup">
+  <div class="container setup-grid">
+    <div class="setup-text">
+      <div class="eyebrow">Get started</div>
+      <h2>Run Chorify in 4 steps.</h2>
+      <ol class="setup-list">
+        <li><strong>Clone or download</strong> the project source.</li>
+        <li>Create a <code>.env</code> file with <code>OPENAI_API_KEY="your-key"</code>.</li>
+        <li>Activate a virtualenv and install: <code>pip install -r requirements.txt</code>.</li>
+        <li>Run: <code>python main.py</code> — you should see the Chorify window.</li>
+      </ol>
+      <p class="setup-note">For haptic feedback, flash <code>codepy_backup.py</code> to your ESP32 board, then pair from inside the app.</p>
+    </div>
+
+    <div class="terminal" id="download">
+      <div class="terminal-bar">
+        <span class="dot dot-r"></span>
+        <span class="dot dot-y"></span>
+        <span class="dot dot-g"></span>
+        <span class="terminal-title">~ / chorify · zsh</span>
+      </div>
+      <pre class="terminal-body"><code><span class="t-c">$</span> <span class="t-cmd">git clone</span> https://github.com/ronategarcia/eva_project.git
+<span class="t-c">$</span> <span class="t-cmd">cd</span> eva_project
+<span class="t-c">$</span> <span class="t-cmd">python -m venv</span> .venv
+<span class="t-c">$</span> <span class="t-cmd">source</span> .venv/bin/activate
+<span class="t-c">$</span> <span class="t-cmd">pip install</span> -r requirements.txt
+<span class="t-c">$</span> <span class="t-cmd">echo</span> 'OPENAI_API_KEY="sk-..."' > .env
+<span class="t-c">$</span> <span class="t-cmd">python</span> main.py
+<span class="t-out">› Chorify ready. Bluetooth scanning...</span>
+<span class="t-out">› Reference pose stream loaded.</span>
+<span class="t-out">› Webcam online — strike a pose.</span></code></pre>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Final CTA ===== -->
+<section class="cta">
+  <div class="container">
+    <div class="cta-card">
+      <h2>Ready to feel the choreography?</h2>
+      <p>Grab the source, flash the wearable, and turn any music video into your private dance studio.</p>
+      <div class="cta-buttons">
+        <a href="https://github.com/ronategarcia/eva_project" target="_blank" rel="noopener" class="btn btn-primary">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.27-1.69-1.27-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.75 2.69 1.25 3.35.96.1-.74.4-1.25.72-1.54-2.55-.29-5.23-1.28-5.23-5.7 0-1.26.45-2.29 1.18-3.1-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.79 0c2.21-1.49 3.18-1.18 3.18-1.18.62 1.58.23 2.75.11 3.04.74.81 1.18 1.84 1.18 3.1 0 4.43-2.69 5.41-5.25 5.69.41.36.78 1.05.78 2.13v3.16c0 .31.21.68.8.56A11.51 11.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/></svg>
+          View on GitHub
+        </a>
+        <a href="https://github.com/ronategarcia/eva_project/archive/refs/heads/main.zip" class="btn btn-secondary">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download .zip
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Footer ===== -->
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <div class="logo">
+        <span class="logo-mark">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="5" r="2"/>
+            <path d="M12 7v5"/>
+            <path d="M8 22l4-10 4 10"/>
+            <path d="M7 14l5-2 5 2"/>
+          </svg>
+        </span>
+        <span class="logo-text">Chorify</span>
+      </div>
+      <p>An open-source dance coach with vision and vibration.</p>
+    </div>
+    <div class="footer-links">
+      <a href="https://github.com/ronategarcia/eva_project" target="_blank" rel="noopener">GitHub</a>
+      <a href="#features">Features</a>
+      <a href="#setup">Setup</a>
+      <a href="privacy-policy.html">Privacy</a>
+    </div>
+  </div>
+  <div class="footer-bottom container">
+    <span>© <span id="year"></span> Chorify · EVA Project</span>
+    <span>Made with movement.</span>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
